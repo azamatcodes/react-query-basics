@@ -10,7 +10,8 @@ const RQSuperHeroes = () => {
     'super-heroes',
     fetchSuperHeroes,
     {
-      cacheTime: 300000
+      cacheTime: 300000, // default value 5 minutes
+      staleTime: 1000 * 20 // default value is 0
     }
   )
 
