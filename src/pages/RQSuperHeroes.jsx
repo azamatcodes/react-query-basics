@@ -6,7 +6,7 @@ const fetchSuperHeroes = () => {
 }
 
 const RQSuperHeroes = () => {
-  const { data, isLoading, isError, error, isFetching } = useQuery(
+  const { data, isLoading, isError, error, isFetching, refetch } = useQuery(
     'super-heroes',
     fetchSuperHeroes,
     {
@@ -17,12 +17,15 @@ const RQSuperHeroes = () => {
       refetchOnMount: true, // default value is - true
       refetchOnWindowFocus: true, // default value is - true
       // Polling
-      refetchInterval: 12000, // default value is - false
-      refetchIntervalInBackground: true // default value is - false
+      refetchInterval: false, // default value is - false
+      refetchIntervalInBackground: false, // default value is - false
+      // useQuery on click
+      enabled: false
     }
   )
 
-  if (isLoading) {
+  // For every time showing Loading spinner
+  if (isLoading || isFetching) {
     return <h2>Loading...</h2>
   }
 
@@ -35,6 +38,11 @@ const RQSuperHeroes = () => {
   return (
     <div className="superheroes">
       <h2 className="superheroes__title">Super Heroes</h2>
+
+      {/* refetch works with any event */}
+      {/* {!data && <button type="button" onClick={refetch}>Fetch Heroes</button>} */}
+      <button type="button" onClick={refetch}>Fetch Heroes</button>
+
       <div className="superheroes__list">
         {data?.data.map((hero) => {
           return (
