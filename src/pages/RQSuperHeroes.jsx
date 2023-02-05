@@ -6,6 +6,14 @@ const fetchSuperHeroes = () => {
 }
 
 const RQSuperHeroes = () => {
+  const onSuccess = (data) => {
+    console.log('Perform side effect after data fetching', data)
+  }
+
+  const onError = (error) => {
+    console.log('Perform side effect after encountering error', error)
+  }
+
   const { data, isLoading, isError, error, isFetching, refetch } = useQuery(
     'super-heroes',
     fetchSuperHeroes,
@@ -20,7 +28,10 @@ const RQSuperHeroes = () => {
       refetchInterval: false, // default value is - false
       refetchIntervalInBackground: false, // default value is - false
       // useQuery on click
-      enabled: false
+      enabled: false, // default is - true
+      // Success and Error callback
+      onSuccess: onSuccess,
+      onError: onError
     }
   )
 
