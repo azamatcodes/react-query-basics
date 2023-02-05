@@ -11,9 +11,14 @@ const RQSuperHeroes = () => {
     fetchSuperHeroes,
     {
       cacheTime: 300000, // default value is - 5 minutes
+      // Stale Time
       staleTime: 1000 * 20, // default value is - 0
+      // Refetch Defaults
       refetchOnMount: true, // default value is - true
-      refetchOnWindowFocus: true // default value is - true
+      refetchOnWindowFocus: true, // default value is - true
+      // Polling
+      refetchInterval: 12000, // default value is - false
+      refetchIntervalInBackground: true // default value is - false
     }
   )
 
