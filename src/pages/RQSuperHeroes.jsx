@@ -31,7 +31,13 @@ const RQSuperHeroes = () => {
       enabled: false, // default is - true
       // Success and Error callback
       onSuccess: onSuccess,
-      onError: onError
+      onError: onError,
+      // Data Transformation
+      select: (data) => {
+        const superHeroNames = data.data.map((hero) => hero.name)
+        console.log(superHeroNames)
+        return superHeroNames
+      }
     }
   )
 
@@ -55,10 +61,18 @@ const RQSuperHeroes = () => {
       <button type="button" onClick={refetch}>Fetch Heroes</button>
 
       <div className="superheroes__list">
-        {data?.data.map((hero) => {
+        {/* {data?.data.map((hero) => {
           return (
             <div className="superheroes__item" key={hero.id}>
               <div className="superheroes__name">{hero.name}</div>
+            </div>
+          )
+        })} */}
+
+        {data?.map((heroName, index) => {
+          return (
+            <div className="superheroes__item" key={index}>
+              <div className="superheroes__name">{heroName}</div>
             </div>
           )
         })}
