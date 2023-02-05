@@ -10,8 +10,10 @@ const RQSuperHeroes = () => {
     'super-heroes',
     fetchSuperHeroes,
     {
-      cacheTime: 300000, // default value 5 minutes
-      staleTime: 1000 * 20 // default value is 0
+      cacheTime: 300000, // default value is - 5 minutes
+      staleTime: 1000 * 20, // default value is - 0
+      refetchOnMount: true, // default value is - true
+      refetchOnWindowFocus: true // default value is - true
     }
   )
 
