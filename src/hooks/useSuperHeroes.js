@@ -9,7 +9,7 @@ const useSuperHeroes = (onSuccess, onError) => {
   return useQuery("super-heroes", fetchSuperHeroes, {
     cacheTime: 300000, // default value is - 5 minutes
     // Stale Time
-    staleTime: 1000 * 20, // default value is - 0
+    // staleTime: 1000 * 20, // default value is - 0
     // Refetch Defaults
     refetchOnMount: true, // default value is - true
     refetchOnWindowFocus: true, // default value is - true
@@ -22,11 +22,11 @@ const useSuperHeroes = (onSuccess, onError) => {
     onSuccess: onSuccess,
     onError: onError,
     // Data Transformation
-    select: (data) => {
-      const superHeroNames = data.data.map((hero) => hero.name)
-      console.log(superHeroNames)
-      return superHeroNames
-    }
+    // select: (data) => {
+    //   const superHeroNames = data.data.map((hero) => hero.name)
+    //   console.log(superHeroNames)
+    //   return superHeroNames
+    // }
   })
 }
 

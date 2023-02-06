@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 import useSuperHeroes from "../hooks/useSuperHeroes"
 
 const RQSuperHeroes = () => {
@@ -31,21 +32,23 @@ const RQSuperHeroes = () => {
       <button type="button" onClick={refetch}>Fetch Heroes</button>
 
       <div className="superheroes__list">
-        {/* {data?.data.map((hero) => {
+        {data?.data.map((hero) => {
           return (
             <div className="superheroes__item" key={hero.id}>
-              <div className="superheroes__name">{hero.name}</div>
+              <div className="superheroes__name">
+                <Link to={`/rq-super-heroes/${hero.id}`}>{hero.name}</Link>
+              </div>
             </div>
           )
-        })} */}
+        })}
 
-        {data?.map((heroName, index) => {
+        {/* {data?.map((heroName, index) => {
           return (
             <div className="superheroes__item" key={index}>
               <div className="superheroes__name">{heroName}</div>
             </div>
           )
-        })}
+        })} */}
       </div>
     </div>
   )
